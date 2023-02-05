@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+remote = `git remote -v 2>&1 | grep origin`.split("\n").first.split(":").last.split(".").first
+
+# https://github.com/klaxit/klaxit-insights/compare/fix/readme-typos?expand=1
+`git rev-parse --abbrev-ref HEAD 2>&1`
+  .tap do |br|
+    branch = br.gsub("\n", "")
+    pp branch
+    system("open http://github.com/#{remote}/compare/#{branch}?expand=1")
+  end

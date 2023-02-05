@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+deleted_branches =
+  # <<< switch when access to playground is back
+  # `git fetch --all --tags --prune --dry-run 2>&1 | grep deleted`
+  `git fetch --tags --prune --dry-run 2>&1 | grep deleted`
+  # >>> switch when access to playground is back
+    .split("\n")
+    .map { |line| line.split('origin/')[1] }
+    .select { |branch|
+      system("git rev-parse --verify #{branch} > /dev/null 2>&1")
+    }
+
+deleted_branches.each do |branch|
+  puts `git branch -D #{branch}`
+end
+
+# <<< switch when access to playground is back
+# system 'git fetch --all --tags --prune'
+system 'git fetch --tags --prune'
+# >>> switch when access to playground is back
