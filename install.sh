@@ -30,10 +30,17 @@ source $HOME/.zshenv
 link .config/zsh/.zshrc
 link .config/zsh/.zprofile
 link .config/zsh/custom/aliases.zsh
-# 
 
 #################################################################
-# 2 # - NVIM
+# 2 # - KITTY
+#################################################################
+
+link .config/kitty/current-theme.conf
+link .config/kitty/kitty.conf
+link .config/kitty/macos-launch-services-cmdline
+
+#################################################################
+# 3 # - NVIM
 #################################################################
 
 # create links to neovim config
@@ -55,7 +62,7 @@ link .config/nvim/plugin/packer_compiled.lua
 link .config/nvim/init.lua
 
 #################################################################
-# 3 # - SCRIPTS
+# 4 # - SCRIPTS
 #################################################################
 
 # create links to scripts
@@ -63,7 +70,9 @@ link bin/git-fetch-and-delete
 link bin/git-new-pr
 
 #################################################################
-# 4 # - GIT
+# 5 # - GIT
 #################################################################
 
+# when using XDG_CONFIG_COM, git config file must use this structure
+# and not the usual .gitconfig located in $HOME
 link .config/git/config
