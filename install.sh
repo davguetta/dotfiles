@@ -16,8 +16,9 @@ link() {
   fi
 }
 
-# install zsh plugins before linking files referencing them
-
+#################################################################
+# 1 # - install zsh plugins before linking files referencing them
+#################################################################
 
 # create links to zsh config
 # start with setting environment variable
@@ -30,6 +31,10 @@ link .config/zsh/.zshrc
 link .config/zsh/.zprofile
 link .config/zsh/custom/aliases.zsh
 # 
+
+#################################################################
+# 2 # - NVIM
+#################################################################
 
 # create links to neovim config
 link .config/nvim/after/plugin/colors.lua
@@ -49,6 +54,16 @@ link .config/nvim/lua/core/set.lua
 link .config/nvim/plugin/packer_compiled.lua
 link .config/nvim/init.lua
 
+#################################################################
+# 3 # - SCRIPTS
+#################################################################
+
 # create links to scripts
 link bin/git-fetch-and-delete
 link bin/git-new-pr
+
+#################################################################
+# 4 # - GIT
+#################################################################
+
+link .config/git/config

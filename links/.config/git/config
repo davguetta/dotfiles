@@ -1,0 +1,51 @@
+# This is Git's per-user configuration file.
+[user]
+  name = David Guetta
+  email = 86650853+davguetta@users.noreply.github.com
+
+[alias]
+  # Via https://gist.github.com/robmiller/6018582
+  # Get the current branch name (not so useful in itself, but used in
+  # other aliases)
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+    # Short one-line log via http://www.jukie.net/bart/blog/pimping-out-git-log
+  l = log -n 10 --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+    # One-line log with a graph
+  lg = log --graph --pretty=format:'%C(yellow)%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+    # Commit with amend and no-edit
+  amend = commit --amend --no-edit
+  # Force push with lease - in case of amend for instace
+  flease = push --force-with-lease
+    # Commit with fixup. Must specify SHA1 afterward as in https://medium.com/just-tech-it-now/git-commit-fixup-corriger-editer-un-commit-simplement-dd6c7d9026cd
+  fixup = commit --fixup
+    # Autosquash after a fixup pour avoir "git rebase -i --autosquash 4f6cbe1~" as in https://medium.com/just-tech-it-now/git-commit-fixup-corriger-editer-un-commit-simplement-dd6c7d9026cd
+  autosquash = rebase -i --autosquash
+    # Commit work in progress
+  # wip = !git add . && git commit -m "wip"
+  wip = "!git add . && git commit -m \"WIP on $(git branch-name)\""
+    # set upstream for the 1st push
+    first = !git push --set-upstream origin $(git branch-name) && git p
+    # Commit work in progress
+  unwip = reset HEAD~1
+    # Removes a file from the index
+  unstage = reset --quiet HEAD --
+    # Rewind last commit
+  uncommit = !git reset --soft HEAD~ && git reset HEAD .
+    # Fetch all remotes, with tags and remove dead branches
+  f = !~/bin/git-fetch-and-delete
+    # Open a new PR
+    p = !~/bin/git-new-pr
+    # stash and name the stash (add "name_of_the_stash" afterward)
+  s = stash push -m
+    # Launch RuboCop for only touched ruby files
+  rubocop = "! bundle exec rubocop $(git status --short --untracked-files --no-renames | grep '\\.rb$' | grep -Ev '^ ?D' | grep -v schema.rb | cut -b 3-)"
+  rubocopa = "! bundle exec rubocop -a $(git status --short --untracked-files --no-renames | grep '\\.rb$' | grep -Ev '^ ?D' | grep -v schema.rb | cut -b 3-)"
+  rubocopA = "! bundle exec rubocop -A $(git status --short --untracked-files --no-renames | grep '\\.rb$' | grep -Ev '^ ?D' | grep -v schema.rb | cut -b 3-)"
+    # Launch rspec for only touched *_spec.rb files
+  rspec = "! bundle exec rspec $(git status --short --untracked-files --no-renames | grep '\\_spec.rb$' | grep -Ev '^ ?D' | grep -v schema.rb | cut -b 3-)"
+
+[branch]
+  autosetuprebase = always
+
+[pull]
+  rebase = true
