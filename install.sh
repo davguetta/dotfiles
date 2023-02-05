@@ -16,6 +16,21 @@ link() {
   fi
 }
 
+# install zsh plugins before linking files referencing them
+
+
+# create links to zsh config
+# start with setting environment variable
+# 1 - linking .zshenv
+# 2 - sourcing it
+link .zshenv
+source $HOME/.zshenv
+# create other zsh links
+link .config/zsh/.zshrc
+link .config/zsh/.zprofile
+link .config/zsh/custom/aliases.zsh
+# 
+
 # create links to neovim config
 link .config/nvim/after/plugin/colors.lua
 link .config/nvim/after/plugin/fugitive.lua
