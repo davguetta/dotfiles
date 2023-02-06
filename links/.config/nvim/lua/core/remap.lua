@@ -80,5 +80,5 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- @= : see :help @=
 -- e : silence pattern errors cf.
 -- zv : related to folds cf. https://neovim.io/doc/user/usr_28.html#usr_28.txt
-vim.keymap.set("", "K", ":s,^\\(\\s*\\)[^# \\t]\\@=,# ,e<CR>:nohls<CR>zvj")
+vim.keymap.set("", "M", ":s,^\\(\\s*\\)[^# \\t]\\@=,# ,e<CR>:nohls<CR>zvj")
 vim.keymap.set("", "L", ":s,^# ,,e<CR>:nohls<CR>zvj")

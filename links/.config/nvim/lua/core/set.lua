@@ -7,6 +7,10 @@ vim.g.mapleader = " "
 o.nu = true
 o.relativenumber = true
 
+-- Smartcase search
+o.ignorecase = true
+o.smartcase = true
+
 -- 2 spaces indent
 o.tabstop = 2
 o.softtabstop = 2
