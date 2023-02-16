@@ -45,6 +45,9 @@ o.updatetime = 50
 -- limit at column 80
 o.colorcolumn = "80"
 
+-- hightlight cursor line
+o.cursorline = true
+
 -- expose hidden characters
 o.list = true
 o.listchars = {
